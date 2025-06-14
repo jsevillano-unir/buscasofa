@@ -19,6 +19,7 @@ function Login({ onLogin }) {
     if (res.ok) {
       setMsg('¡Bienvenido, ' + data.username + '!');
       localStorage.setItem('token', data.token);
+      localStorage.setItem('email', form.email);
       if (onLogin) onLogin(data.username);
     } else {
       setMsg(data.message);

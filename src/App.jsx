@@ -7,6 +7,7 @@ import { FuelApi } from './apis/FuelApi';
 
 
 import Header from './components/Header';
+import Profile from './components/Profile';
 import FuelMap from './components/FuelMap';
 import About from './components/About';
 import Home from './components/Home';
@@ -61,7 +62,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header user={user} />
+      <Header user={user} onLogout={() => setUser(null)} />
       {
         loading && <div className="loading">Cargando...</div>
       }
@@ -73,11 +74,12 @@ function App() {
           <Route path="/registro" element={<Register />} />
           <Route path="/login" element={<Login onLogin={setUser} />} />
           <Route path="/about" element={<About />} />
-
+          
           <Route path="/" element={<Home stations={stations} />} />
           <Route path="/mapa" element={<FuelMap stations={stations} />} />
           <Route path="/lista" element={<FuelTable stations={stations} />} />
           <Route path="/station/:id" element={<StationDetail stations={stations} user={user} />} />
+          <Route path="/perfil" element={<Profile user={user} />} />  {/* Nueva ruta del perfil */}
           <Route path="*" element={<NotFound />} /> {/* Pagina no encontrada */}
         </Routes>
       )}
