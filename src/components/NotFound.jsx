@@ -5,3 +5,4 @@ export const NotFound = () => {
     <h1>No hemos encontrado la página que buscas</h1>
   )
 }
+export default NotFound;
